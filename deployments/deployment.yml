@@ -15,6 +15,7 @@ spec:
         vault.hashicorp.com/agent-inject-secret-secret1: "secrets/k8s/firstvaultapp/testsecrets#secret1"
         vault.hashicorp.com/agent-inject-secret-secret2: "secrets/k8s/firstvaultapp/testsecrets#secret2"
         vault.hashicorp.com/role: "app"
+        vault.hashicorp.com/namespace: "hscvault"
     spec:
       containers:
         - name: firstvaultappapi-container
