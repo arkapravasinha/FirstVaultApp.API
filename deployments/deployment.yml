@@ -11,15 +11,15 @@ spec:
       labels:
         app: firstvaultappapi
       annotations:
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/agent-inject-secret-secret1.txt: "secrets/k8s/firstvaultapp/testsecrets#secret1"
-        vault.hashicorp.com/agent-inject-secret-secret2.txt: "secrets/k8s/firstvaultapp/testsecrets#secret2"
-        vault.hashicorp.com/role: "app"
-        vault.hashicorp.com/namespace: "hscvault"
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/agent-inject-secret-secret1.txt: secrets/k8s/firstvaultapp/testsecrets#secret1
+        vault.hashicorp.com/agent-inject-secret-secret2.txt: secrets/k8s/firstvaultapp/testsecrets#secret2
+        vault.hashicorp.com/role: app
+        vault.hashicorp.com/namespace: hscvault
     spec:
       containers:
         - name: firstvaultappapi-container
-          image: ghcr.io/arkapravasinha/firstvaultappapi:v0.1.5
+          image: ghcr.io/arkapravasinha/firstvaultappapi:v0.1.6
           resources:
             limits:
               memory: 128Mi
