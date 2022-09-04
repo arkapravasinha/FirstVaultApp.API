@@ -12,8 +12,8 @@ spec:
         app: firstvaultappapi
       annotations:
         vault.hashicorp.com/agent-inject: 'true'
-        vault.hashicorp.com/agent-inject-secret-secret1.txt: k8s/firstvaultapp/testsecrets#secret1
-        vault.hashicorp.com/agent-inject-secret-secret2.txt: k8s/firstvaultapp/testsecrets#secret2
+        vault.hashicorp.com/agent-inject-secret-secret1.txt: k8s/firstvaultapp/testsecrets/secret1
+        vault.hashicorp.com/agent-inject-secret-secret2.txt: k8s/firstvaultapp/testsecrets/secret2
         vault.hashicorp.com/role: app
         vault.hashicorp.com/namespace: hscvault
     spec:
