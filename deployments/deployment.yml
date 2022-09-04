@@ -17,6 +17,7 @@ spec:
         vault.hashicorp.com/role: "app"
         vault.hashicorp.com/namespace: "hscvault"
     spec:
+      serviceAccountName: hscvault/vault
       containers:
         - name: firstvaultappapi-container
           image: ghcr.io/arkapravasinha/firstvaultappapi:v0.1.0
