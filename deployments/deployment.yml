@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firstvaultappapi-deployment
+spec:
+  selector:
+    matchLabels:
+      app: firstvaultappapi
+  template:
+    metadata:
+      labels:
+        app: firstvaultappapi
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/agent-inject-secret-secret1: "secrets/k8s/firstvaultapp/testsecrets#secret1"
+        vault.hashicorp.com/agent-inject-secret-secret2: "secrets/k8s/firstvaultapp/testsecrets#secret2"
+        vault.hashicorp.com/role: "app"
+    spec:
+      containers:
+        - name: firstvaultappapi-container
+          image: ghcr.io/arkapravasinha/firstvaultappapi:v0.0.1
+          resources:
+            limits:
+              memory: 128Mi
+              cpu: 500m
+          ports:
+            - containerPort: 80
