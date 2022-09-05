@@ -12,11 +12,17 @@ spec:
         app: firstvaultappapi
       annotations:
         vault.hashicorp.com/agent-inject: 'true'
-        vault.hashicorp.com/agent-inject-secret-secret1.txt: k8s/firstvaultapp/testsecrets/secret1
-        vault.hashicorp.com/agent-inject-secret-secret2.txt: k8s/firstvaultapp/testsecrets/secret2
-        vault.hashicorp.com/role: app
-        vault.hashicorp.com/namespace: hscvault
+        vault.hashicorp.com/agent-inject-template-secret1.txt: |
+          {{ with secret "k8s/firstvaultapp/testsecrets" }}
+          {{ .Data.data.secret1 }}
+          {{ end }}
+        vault.hashicorp.com/agent-inject-template-secret2.txt: |
+          {{ with secret "k8s/firstvaultapp/testsecrets" }}
+          {{ .Data.data.secret2 }}
+          {{ end }}
+        vault.hashicorp.com/role: firstvaultapp-role
     spec:
+      serviceAccountName: firstvaultapp-sa
       containers:
         - name: firstvaultappapi-container
           image: ghcr.io/arkapravasinha/firstvaultappapi:v0.1.9
