@@ -11,23 +11,23 @@ spec:
       labels:
         app: firstvaultappapi
       annotations:
-        vault.hashicorp.com/agent-inject: 'true'   # Inject Side Car     
-        vault.hashicorp.com/agent-inject-secret-secret1.txt: k8s/firstvaultapp/testsecrets #Secret1 file and secret path
-        vault.hashicorp.com/agent-inject-secret-secret2.txt: k8s/firstvaultapp/testsecrets #Secret2 file and secret path
-        vault.hashicorp.com/agent-inject-template-secret1.txt: |   # Secret 1 file template
+        vault.hashicorp.com/agent-inject: 'true'
+        vault.hashicorp.com/agent-inject-secret-secret1.txt: k8s/firstvaultapp/testsecrets
+        vault.hashicorp.com/agent-inject-secret-secret2.txt: k8s/firstvaultapp/testsecrets
+        vault.hashicorp.com/agent-inject-template-secret1.txt: |
           {{ with secret "k8s/firstvaultapp/testsecrets" }}
           {{ .Data.data.secret1 }}
           {{ end }}
-        vault.hashicorp.com/agent-inject-template-secret2.txt: |   # Secret 2 file template
+        vault.hashicorp.com/agent-inject-template-secret2.txt: |
           {{ with secret "k8s/firstvaultapp/testsecrets" }}
           {{ .Data.data.secret2 }}
           {{ end }}
-        vault.hashicorp.com/role: firstvaultapp-role # Role Created in Vault
+        vault.hashicorp.com/role: firstvaultapp-role
     spec:
-      serviceAccountName: firstvaultapp-sa # Service account binded to role in Vault
+      serviceAccountName: firstvaultapp-sa
       containers:
         - name: firstvaultappapi-container
-          image: ghcr.io/arkapravasinha/firstvaultappapi:v0.1.10
+          image: ghcr.io/arkapravasinha/firstvaultappapi:v0.1.11
           resources:
             limits:
               memory: 128Mi
