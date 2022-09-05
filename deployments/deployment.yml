@@ -23,7 +23,7 @@ spec:
       serviceAccountName: firstvaultapp-sa
       containers:
         - name: firstvaultappapi-container
-          image: ghcr.io/arkapravasinha/firstvaultappapi:v0.1.11
+          image: ghcr.io/arkapravasinha/firstvaultappapi:v0.1.12
           resources:
             limits:
               memory: 128Mi
